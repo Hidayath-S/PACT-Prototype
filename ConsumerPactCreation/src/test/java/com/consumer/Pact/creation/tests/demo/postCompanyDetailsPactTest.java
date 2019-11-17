@@ -57,7 +57,7 @@ public class postCompanyDetailsPactTest {
 				.path("/company")
 				.method("POST")
 				.headers(headers)
-				.body(new readJsontoString().readFile("C:\\Users\\Hidayath\\Desktop\\Pact_Request\\postCompanyDetails.txt"))
+				.body(new readJsontoString().readFile("Requests/postCompanyDetails.txt"))
 				.willRespondWith()
 				.status(200)
 				.headers(headers)

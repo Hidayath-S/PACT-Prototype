@@ -36,7 +36,7 @@ public class postCompanyDetails {
 	public String addCompanyDetails() throws IOException{
 
 		String url = String.format("Http://localhost:%d/company", port);
-		String payload = new readJsontoString().readFile("C:\\Users\\Hidayath\\Desktop\\Pact_Request\\postCompanyDetails.txt");
+		String payload = new readJsontoString().readFile("Requests/postCompanyDetails.txt");
 		StringEntity entity = new StringEntity(payload, ContentType.APPLICATION_JSON);
 
 		HttpClient httpClient = HttpClientBuilder.create().build();
