@@ -46,11 +46,16 @@
     <configuration>
       <serviceProviders>
         <serviceProvider>
-          <name>UserService</name>
-          <pactFileDirectory>C:/Users/Hidayath/git/PACT/pacts</pactFileDirectory>
-          <insecure>true</insecure>
+          <name>getCompanyDetailsByIDService</name>
+          <protocol>http</protocol>
+          <host>localhost</host>
+          <port>1234</port>
+          <path>/</path>
+          <pactBrokerUrl>http://localhost:8113</pactBrokerUrl>
+          <!--<pactFileDirectory>../pacts</pactFileDirectory>
+           <insecure>true</insecure>
           <trustStore>C:/Users/Hidayath/keystore.jks</trustStore>
-          <trustStorePassword>abc123</trustStorePassword>
+          <trustStorePassword>abc123</trustStorePassword> -->
         </serviceProvider>
       </serviceProviders>
     </configuration>

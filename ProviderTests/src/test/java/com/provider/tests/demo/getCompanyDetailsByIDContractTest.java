@@ -17,7 +17,7 @@ import au.com.dius.pact.provider.junit.target.TestTarget;
 @RunWith(PactRunner.class)
 @Provider("getCompanyDetailsByIDService")
 @PactFolder("../pacts")
-@VerificationReports(value = {"json"}, reportDir = "../pacts")
+@VerificationReports(value = {"json"}, reportDir = "../reports")
 public class getCompanyDetailsByIDContractTest {
 	public getCompanyDetailsByIDContractTest()  {
 	}
