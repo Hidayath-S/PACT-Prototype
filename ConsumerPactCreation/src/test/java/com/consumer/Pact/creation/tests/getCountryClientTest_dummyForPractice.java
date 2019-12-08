@@ -30,7 +30,7 @@ import org.json.simple.parser.*;
 
 public class getCountryClientTest_dummyForPractice {
 	@Rule
-	public PactProviderRuleMk2 provider= new PactProviderRuleMk2("getCountryService","localhost",1234,this);
+	public PactProviderRuleMk2 provider= new PactProviderRuleMk2("getCountryService","localhost",1235,this);
 	//public PactProviderRule provider = new PactProviderRule(provider, host, port, target);
 	
 @Pact(consumer="getCountryServiceClient")
@@ -50,7 +50,7 @@ public RequestResponsePact createPact(PactDslWithProvider builder) throws Except
 			.array("messages")
 			.stringType("Total [249] records found.")
 		    .closeArray()
-		    .minArrayLike("result", 3, 4)
+		    .minArrayLike("result", 3, 249)
 			.stringType("name","India")
 			.stringType("alpha2_code","IN")
 			.stringType("alpha3_code","IND")

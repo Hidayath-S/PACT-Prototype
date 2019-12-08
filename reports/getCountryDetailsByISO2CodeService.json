@@ -1,0 +1,81 @@
+{
+    "metaData": {
+        "date": "2019-12-08T16:52:18+0000",
+        "pactJvmVersion": "3.6.1",
+        "reportFormat": "0.0.0"
+    },
+    "provider": {
+        "name": "getCountryDetailsByISO2CodeService"
+    },
+    "execution": [
+        {
+            "consumer": {
+                "name": "getCountryDetailsByISO2CodeClient2"
+            },
+            "interactions": [
+                {
+                    "interaction": {
+                        "description": "A request for countryDetails with ISO2Code=IN expecting only ISO2Code details",
+                        "request": {
+                            "method": "GET",
+                            "path": "/country/get/iso2code/IN"
+                        },
+                        "response": {
+                            "status": 200,
+                            "headers": {
+                                "Content-Type": "application/json"
+                            },
+                            "body": {
+                                "RestResponse": {
+                                    "result": {
+                                        "name": "India",
+                                        "alpha2_code": "IN"
+                                    },
+                                    "messages": [
+                                        "Country found matching code [IND]."
+                                    ]
+                                }
+                            },
+                            "matchingRules": {
+                                "body": {
+                                    "$.RestResponse.messages[0]": {
+                                        "matchers": [
+                                            {
+                                                "match": "type"
+                                            }
+                                        ],
+                                        "combine": "AND"
+                                    },
+                                    "$.RestResponse.result.name": {
+                                        "matchers": [
+                                            {
+                                                "match": "type"
+                                            }
+                                        ],
+                                        "combine": "AND"
+                                    },
+                                    "$.RestResponse.result.alpha2_code": {
+                                        "matchers": [
+                                            {
+                                                "match": "type"
+                                            }
+                                        ],
+                                        "combine": "AND"
+                                    }
+                                }
+                            }
+                        },
+                        "providerStates": [
+                            {
+                                "name": "There is a country with ISO2Code=IN"
+                            }
+                        ]
+                    },
+                    "verification": {
+                        "result": "OK"
+                    }
+                }
+            ]
+        }
+    ]
+}

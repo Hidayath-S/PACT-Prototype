@@ -57,6 +57,15 @@
           <trustStore>C:/Users/Hidayath/keystore.jks</trustStore>
           <trustStorePassword>abc123</trustStorePassword> -->
         </serviceProvider>
+        <serviceProvider>
+          <name>postCompanyDetails</name>
+          <protocol>http</protocol>
+          <host>localhost</host>
+          <port>1234</port>
+          <path>/</path>
+          <pactBrokerUrl>http://localhost:8113</pactBrokerUrl>
+          
+        </serviceProvider>
       </serviceProviders>
     </configuration>
 </plugin>
