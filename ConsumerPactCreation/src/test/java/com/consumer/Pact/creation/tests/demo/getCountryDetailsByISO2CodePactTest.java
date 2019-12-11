@@ -23,13 +23,12 @@ import java.util.Map;
 public class getCountryDetailsByISO2CodePactTest {
 	@Rule
 	public PactProviderRuleMk2 provider = new PactProviderRuleMk2("getCountryDetailsByISO2CodeService", "localhost", 1233, this);
-
-	@Pact(consumer = "getCountryDetailsByISO2CodeClient2")
+	
+	@Pact(consumer = "getCountryDetailsByISO2CodeConsumerB")
 	public RequestResponsePact createPact(PactDslWithProvider builder) throws Exception {
 		Map<String, String> headers = new HashMap();
 		headers.put("Content-Type", "application/json");
 		
-
 		DslPart countryDetails = new PactDslJsonBody()
 				.object("RestResponse")
 				.array("messages")
@@ -38,15 +37,13 @@ public class getCountryDetailsByISO2CodePactTest {
 				.object("result")	
 				.stringType("name","India")
 				.stringType("alpha2_code","IN")
-				//.stringType("alpha3_code","IND")
+				.stringType("alpha3_code","IND")
 				.closeObject()
 				.asBody();
 				
-				
-
 		return builder
 				.given("There is a country with ISO2Code=IN")
-				.uponReceiving("A request for countryDetails with ISO2Code=IN expecting only ISO2Code details")
+				.uponReceiving("A request for countryDetails with ISO2Code=IN")
 				.path("/country/get/iso2code/IN")
 				.method("GET")
 				.willRespondWith().
@@ -58,10 +55,11 @@ public class getCountryDetailsByISO2CodePactTest {
 
 	@Test()
 	@PactVerification()
-	public void doTest() {
+		public void doTest() {
 		System.setProperty("pact.rootDir", "../pacts");
-		String cName = new getCountryDetailsByISO2CodeClient(provider.getPort()).getCountryDetails();
-		//System.out.println("According to test fName=" + cName);
+		String countryName = new getCountryDetailsByISO2CodeClient(provider.getPort()).getCountryDetails();
+		System.out.println("According to Pact creation test country name is "+countryName);
+		
 
 	}
 

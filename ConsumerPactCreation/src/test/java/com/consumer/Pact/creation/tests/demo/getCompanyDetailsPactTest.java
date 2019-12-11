@@ -32,7 +32,7 @@ public class getCompanyDetailsPactTest {
 	@Rule
 	public PactProviderRuleMk2 provider = new PactProviderRuleMk2("getCompanyDetailsService", "localhost", 1233, this);
 
-	@Pact(consumer = "getCompanyDetailsServiceClient")
+	@Pact(consumer = "getCompanyDetailsServiceConsumer")
 	public RequestResponsePact createPact(PactDslWithProvider builder) throws Exception {
 		Map<String, String> headers = new HashMap();
 		headers.put("Content-Type", "application/json");

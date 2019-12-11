@@ -1,16 +1,16 @@
 {
     "provider": {
-        "name": "getCompanyDetailsByIDService"
+        "name": "getCountryDetailsByISO2CodeService"
     },
     "consumer": {
-        "name": "getCompanyDetailsByIDServiceClient"
+        "name": "getCountryDetailsByISO2CodeConsumerA"
     },
     "interactions": [
         {
-            "description": "A request for companyDetails with Id=49",
+            "description": "A request for countryDetails with ISO2Code=IN expecting only ISO2Code details",
             "request": {
                 "method": "GET",
-                "path": "/company/49"
+                "path": "/country/get/iso2code/IN"
             },
             "response": {
                 "status": 200,
@@ -18,36 +18,38 @@
                     "Content-Type": "application/json"
                 },
                 "body": {
-                    "Status": 0,
-                    "Description": "Seventy One Desc",
-                    "CreatedBy": 0,
-                    "UpdatedDate": "2019-10-22T06:19:52.493",
-                    "CreatedDate": "2019-10-22T06:19:52.493",
-                    "Id": 49,
-                    "Name": "Seventy One"
+                    "RestResponse": {
+                        "result": {
+                            "name": "India",
+                            "alpha2_code": "IN"
+                        },
+                        "messages": [
+                            "Country found matching code [IND]."
+                        ]
+                    }
                 },
                 "matchingRules": {
                     "body": {
-                        "$.Id": {
+                        "$.RestResponse.messages[0]": {
                             "matchers": [
                                 {
-                                    "match": "integer"
+                                    "match": "type"
                                 }
                             ],
                             "combine": "AND"
                         },
-                        "$.CreatedBy": {
+                        "$.RestResponse.result.name": {
                             "matchers": [
                                 {
-                                    "match": "integer"
+                                    "match": "type"
                                 }
                             ],
                             "combine": "AND"
                         },
-                        "$.Status": {
+                        "$.RestResponse.result.alpha2_code": {
                             "matchers": [
                                 {
-                                    "match": "integer"
+                                    "match": "type"
                                 }
                             ],
                             "combine": "AND"
@@ -57,7 +59,7 @@
             },
             "providerStates": [
                 {
-                    "name": "There is a company with Id=49"
+                    "name": "There is a country with ISO2Code=IN"
                 }
             ]
         }

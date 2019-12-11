@@ -1,16 +1,16 @@
 {
     "provider": {
-        "name": "getCountryService"
+        "name": "getAllCountryDetailsService"
     },
     "consumer": {
-        "name": "getCountryServiceClient"
+        "name": "getAllCountryDetailsConsumer"
     },
     "interactions": [
         {
-            "description": "A request for alpha2_code IN",
+            "description": "A request for All countryDetails",
             "request": {
                 "method": "GET",
-                "path": "/country/get/iso3code/USA"
+                "path": "/country/get/all"
             },
             "response": {
                 "status": 200,
@@ -1319,7 +1319,7 @@
             },
             "providerStates": [
                 {
-                    "name": "There is a country with alpha2_code as IN having name as India"
+                    "name": "There are 249 country records with ISOCode details"
                 }
             ]
         }

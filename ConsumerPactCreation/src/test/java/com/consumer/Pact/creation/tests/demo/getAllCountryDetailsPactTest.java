@@ -11,44 +11,48 @@ import au.com.dius.pact.model.RequestResponsePact;
 import org.junit.Rule;
 import org.junit.Test;
 
+import com.consumer.clients.demo.getAllCountryDetailsClient;
 
-import com.consumer.clients.demo.getCompanyDetailsByIDClient;
+
 import java.util.HashMap;
 import java.util.Map;
 
 
 
-public class getCompanyDetailsByIDPactTest {
+public class getAllCountryDetailsPactTest {
 	@Rule
-	public PactProviderRuleMk2 provider = new PactProviderRuleMk2("getCompanyDetailsByIDService", "localhost", 1233, this);
+	public PactProviderRuleMk2 provider = new PactProviderRuleMk2("getAllCountryDetailsService", "localhost", 1233, this);
 
-	@Pact(consumer = "getCompanyDetailsByIDServiceConsumer")
+	@Pact(consumer = "getAllCountryDetailsConsumer")
 	public RequestResponsePact createPact(PactDslWithProvider builder) throws Exception {
 		Map<String, String> headers = new HashMap();
 		headers.put("Content-Type", "application/json");
 		
 
-		DslPart companyDetails = new PactDslJsonBody()
-				.integerType("Id", 49)
-				.stringValue("Name", "Seventy One")
-				.stringValue("Description", "Seventy One Desc")
-				.integerType("CreatedBy", 0)
-				.stringValue("CreatedDate", "2019-10-22T06:19:52.493")
-				.stringValue("UpdatedDate", "2019-10-22T06:19:52.493")
-				.integerType("Status", 0)
+		DslPart countryDetails= new PactDslJsonBody()
+				.object("RestResponse")
+				.array("messages")
+				.stringType("Total [249] records found.")
+			    .closeArray()
+			    .minArrayLike("result", 3, 249)
+				.stringType("name","India")
+				.stringType("alpha2_code","IN")
+				.stringType("alpha3_code","IND")
+				.closeArray()
+				.closeObject()
 				.asBody();
 				
 				
 
 		return builder
-				.given("There is a company with Id=49")
-				.uponReceiving("A request for companyDetails with Id=49")
-				.path("/company/49")
+				.given("There are 249 country records with ISOCode details")
+				.uponReceiving("A request for All countryDetails")
+				.path("/country/get/all")
 				.method("GET")
 				.willRespondWith().
 				status(200).
 				headers(headers).
-				body(companyDetails).toPact();
+				body(countryDetails).toPact();
 
 	}
 
@@ -56,8 +60,8 @@ public class getCompanyDetailsByIDPactTest {
 	@PactVerification()
 	public void doTest() {
 		System.setProperty("pact.rootDir", "../pacts");
-		String cName = new getCompanyDetailsByIDClient(provider.getPort()).getCompanyDetails();
-		System.out.println("According to test fName=" + cName);
+		String cName = new getAllCountryDetailsClient(provider.getPort()).getCountryDetails();
+		//System.out.println("According to test fName=" + cName);
 
 	}
 

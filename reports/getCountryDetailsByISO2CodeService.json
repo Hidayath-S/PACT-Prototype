@@ -1,6 +1,6 @@
 {
     "metaData": {
-        "date": "2019-12-08T16:52:18+0000",
+        "date": "2019-12-10T17:21:10+0000",
         "pactJvmVersion": "3.6.1",
         "reportFormat": "0.0.0"
     },
@@ -10,12 +10,12 @@
     "execution": [
         {
             "consumer": {
-                "name": "getCountryDetailsByISO2CodeClient2"
+                "name": "getCountryDetailsByISO2CodeConsumerB"
             },
             "interactions": [
                 {
                     "interaction": {
-                        "description": "A request for countryDetails with ISO2Code=IN expecting only ISO2Code details",
+                        "description": "A request for countryDetails with ISO2Code=IN",
                         "request": {
                             "method": "GET",
                             "path": "/country/get/iso2code/IN"
@@ -29,6 +29,7 @@
                                 "RestResponse": {
                                     "result": {
                                         "name": "India",
+                                        "alpha3_code": "IND",
                                         "alpha2_code": "IN"
                                     },
                                     "messages": [
@@ -55,6 +56,14 @@
                                         "combine": "AND"
                                     },
                                     "$.RestResponse.result.alpha2_code": {
+                                        "matchers": [
+                                            {
+                                                "match": "type"
+                                            }
+                                        ],
+                                        "combine": "AND"
+                                    },
+                                    "$.RestResponse.result.alpha3_code": {
                                         "matchers": [
                                             {
                                                 "match": "type"

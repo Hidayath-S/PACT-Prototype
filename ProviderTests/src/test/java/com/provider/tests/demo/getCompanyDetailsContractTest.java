@@ -8,6 +8,7 @@ import au.com.dius.pact.provider.junit.PactRunner;
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.State;
 import au.com.dius.pact.provider.junit.VerificationReports;
+import au.com.dius.pact.provider.junit.loader.PactBroker;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
 import au.com.dius.pact.provider.junit.target.HttpTarget;
 import au.com.dius.pact.provider.junit.target.Target;
@@ -15,10 +16,12 @@ import au.com.dius.pact.provider.junit.target.TestTarget;
 
 @RunWith(PactRunner.class)
 @Provider("getCompanyDetailsService")
-@PactFolder("../pacts")
-@VerificationReports(value = {"json"}, reportDir = "../pacts")
+//@PactFolder("../pacts")
+@PactBroker(host="localhost",port="8113")
+@VerificationReports(value = {"json"}, reportDir = "../reports")
 public class getCompanyDetailsContractTest {
 	public getCompanyDetailsContractTest()  {
+		System.setProperty("pact.verifier.publishResults", "true");
 	}
 
 	@TestTarget

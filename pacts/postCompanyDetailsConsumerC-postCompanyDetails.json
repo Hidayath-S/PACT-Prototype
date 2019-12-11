@@ -3,7 +3,7 @@
         "name": "postCompanyDetails"
     },
     "consumer": {
-        "name": "postCompanyDetailsClient"
+        "name": "postCompanyDetailsConsumerC"
     },
     "interactions": [
         {
@@ -32,8 +32,6 @@
                 "body": {
                     "Status": 0,
                     "Description": "Seventy One Desc",
-                    "CreatedBy": 0,
-                    "UpdatedDate": "2019-10-22T06:19:52.493Z",
                     "CreatedDate": "2019-10-22T06:19:52.493Z",
                     "Id": 49,
                     "Name": "Seventy One"
@@ -41,14 +39,6 @@
                 "matchingRules": {
                     "body": {
                         "$.Id": {
-                            "matchers": [
-                                {
-                                    "match": "integer"
-                                }
-                            ],
-                            "combine": "AND"
-                        },
-                        "$.CreatedBy": {
                             "matchers": [
                                 {
                                     "match": "integer"

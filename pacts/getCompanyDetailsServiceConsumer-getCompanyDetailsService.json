@@ -3,7 +3,7 @@
         "name": "getCompanyDetailsService"
     },
     "consumer": {
-        "name": "getCompanyDetailsServiceClient"
+        "name": "getCompanyDetailsServiceConsumer"
     },
     "interactions": [
         {

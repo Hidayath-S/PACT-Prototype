@@ -25,7 +25,7 @@ public class postCompanyDetailsPactTest {
 	@Rule
 	public PactProviderRuleMk2 provider=new PactProviderRuleMk2("postCompanyDetails", "localhost", 1233,this);
 	
-	@Pact(consumer="postCompanyDetailsClient")
+	@Pact(consumer="postCompanyDetailsConsumerD")
 	public RequestResponsePact createPact(PactDslWithProvider builder) throws IOException{
 		Map<String, String> headers=new HashMap();
 		headers.put("Content-Type", "application/json");
@@ -48,7 +48,8 @@ public class postCompanyDetailsPactTest {
 				.integerType("CreatedBy", 0)
 				.stringValue("CreatedDate", "2019-10-22T06:19:52.493Z")
 				.stringValue("UpdatedDate", "2019-10-22T06:19:52.493Z")
-				.integerType("Status", 0)
+				//.integerType("Status", 0)
+				.stringType("Status", "0")
 				.asBody();
 		
 		return builder

@@ -1,24 +1,36 @@
 {
     "metaData": {
-        "date": "2019-12-10T17:20:37+0000",
+        "date": "2019-12-10T17:21:26+0000",
         "pactJvmVersion": "3.6.1",
         "reportFormat": "0.0.0"
     },
     "provider": {
-        "name": "getCompanyDetailsByIDService"
+        "name": "postCompanyDetails"
     },
     "execution": [
         {
             "consumer": {
-                "name": "getCompanyDetailsByIDServiceConsumer"
+                "name": "postCompanyDetailsConsumerD"
             },
             "interactions": [
                 {
                     "interaction": {
-                        "description": "A request for companyDetails with Id=49",
+                        "description": "a request to create new company details",
                         "request": {
-                            "method": "GET",
-                            "path": "/company/49"
+                            "method": "POST",
+                            "path": "/company",
+                            "headers": {
+                                "Content-Type": "application/json"
+                            },
+                            "body": {
+                                "Id": 0,
+                                "Name": "Seventy One",
+                                "Description": "Seventy One Desc",
+                                "Created By": 0,
+                                "CreatedDate": "2019-10-22T06:19:52.493Z",
+                                "UpdatedDate": "2019-10-22T06:19:52.493Z",
+                                "Status": 0
+                            }
                         },
                         "response": {
                             "status": 200,
@@ -26,11 +38,11 @@
                                 "Content-Type": "application/json"
                             },
                             "body": {
-                                "Status": 0,
+                                "Status": "0",
                                 "Description": "Seventy One Desc",
                                 "CreatedBy": 0,
-                                "UpdatedDate": "2019-10-22T06:19:52.493",
-                                "CreatedDate": "2019-10-22T06:19:52.493",
+                                "UpdatedDate": "2019-10-22T06:19:52.493Z",
+                                "CreatedDate": "2019-10-22T06:19:52.493Z",
                                 "Id": 49,
                                 "Name": "Seventy One"
                             },
@@ -55,7 +67,7 @@
                                     "$.Status": {
                                         "matchers": [
                                             {
-                                                "match": "integer"
+                                                "match": "type"
                                             }
                                         ],
                                         "combine": "AND"
@@ -65,12 +77,28 @@
                         },
                         "providerStates": [
                             {
-                                "name": "There is a company with Id=49"
+                                "name": "user wants to create new company details with name as Seventy One"
                             }
                         ]
                     },
                     "verification": {
-                        "result": "OK"
+                        "result": "failed",
+                        "body": {
+                            "comparison": {
+                                "$.Status": [
+                                    {
+                                        "mismatch": "Expected 0 to be the same type as '0'",
+                                        "diff": ""
+                                    }
+                                ]
+                            },
+                            "diff": [
+                                "{",
+                                "-    \"Status\": \"0\",",
+                                "+    \"Status\": 0,",
+                                "    \"Description\": \"Seventy One Desc\","
+                            ]
+                        }
                     }
                 }
             ]
