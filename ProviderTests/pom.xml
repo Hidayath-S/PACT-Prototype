@@ -46,10 +46,10 @@
     <configuration>
       <serviceProviders>
         <serviceProvider>
-          <name>getCompanyDetailsByIDService</name>
+          <name>getCountryDetailsByISO2CodeService</name>
           <protocol>http</protocol>
           <host>localhost</host>
-          <port>1234</port>
+          <port>1235</port>
           <path>/</path>
           <pactBrokerUrl>http://localhost:8113</pactBrokerUrl>
           <!--<pactFileDirectory>../pacts</pactFileDirectory>
