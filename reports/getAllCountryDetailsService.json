@@ -1,6 +1,6 @@
 {
     "metaData": {
-        "date": "2019-12-10T17:20:20+0000",
+        "date": "2020-05-05T12:10:14+0000",
         "pactJvmVersion": "3.6.1",
         "reportFormat": "0.0.0"
     },
@@ -1332,7 +1332,56 @@
                         ]
                     },
                     "verification": {
-                        "result": "OK"
+                        "result": "failed",
+                        "message": "A request for All countryDetails",
+                        "exception": {
+                            "message": "expecting '}' or ',' but got current char '{' with an int value of 123\n\nThe current character read is '{' with an int value of 123\nexpecting '}' or ',' but got current char '{' with an int value of 123\nline number 1\nindex number 2\n{ {\n..^",
+                            "stackTrace": [
+                                "groovy.json.JsonException: expecting '}' or ',' but got current char '{' with an int value of 123",
+                                "The current character read is '{' with an int value of 123",
+                                "expecting '}' or ',' but got current char '{' with an int value of 123",
+                                "line number 1",
+                                "index number 2",
+                                "{ {",
+                                "..^",
+                                "\tat org.apache.groovy.json.internal.JsonParserCharArray.complain(JsonParserCharArray.java:153)",
+                                "\tat org.apache.groovy.json.internal.JsonParserCharArray.decodeJsonObject(JsonParserCharArray.java:144)",
+                                "\tat org.apache.groovy.json.internal.JsonParserCharArray.decodeValueInternal(JsonParserCharArray.java:186)",
+                                "\tat org.apache.groovy.json.internal.JsonParserCharArray.decodeValue(JsonParserCharArray.java:157)",
+                                "\tat org.apache.groovy.json.internal.JsonParserCharArray.decodeFromChars(JsonParserCharArray.java:46)",
+                                "\tat org.apache.groovy.json.internal.JsonParserCharArray.parse(JsonParserCharArray.java:384)",
+                                "\tat org.apache.groovy.json.internal.BaseJsonParser.parse(BaseJsonParser.java:112)",
+                                "\tat groovy.json.JsonSlurper.parseText(JsonSlurper.java:205)",
+                                "\tat au.com.dius.pact.matchers.util.JsonUtils$.parseJsonString(JsonUtils.scala:11)",
+                                "\tat au.com.dius.pact.matchers.JsonBodyMatcher.matchBody(JsonBodyMatcher.scala:23)",
+                                "\tat au.com.dius.pact.model.Matching$.matchBody(Matching.scala:136)",
+                                "\tat au.com.dius.pact.model.ResponseMatching.responseMismatches(ResponseMatching.scala:23)",
+                                "\tat au.com.dius.pact.provider.ResponseComparison$Companion.compareResponse(ResponseComparison.kt:128)",
+                                "\tat au.com.dius.pact.provider.ResponseComparison.compareResponse(ResponseComparison.kt)",
+                                "\tat org.codehaus.groovy.vmplugin.v7.IndyInterface.selectMethod(IndyInterface.java:237)",
+                                "\tat au.com.dius.pact.provider.ProviderVerifier.verifyRequestResponsePact(ProviderVerifier.groovy:213)",
+                                "\tat org.codehaus.groovy.vmplugin.v7.IndyInterface.selectMethod(IndyInterface.java:237)",
+                                "\tat au.com.dius.pact.provider.ProviderVerifier.verifyResponseFromProvider(ProviderVerifier.groovy:201)",
+                                "\tat au.com.dius.pact.provider.junit.target.HttpTarget.testInteraction(HttpTarget.kt:73)",
+                                "\tat au.com.dius.pact.provider.junit.InteractionRunner$interactionBlock$statement$1.evaluate(InteractionRunner.kt:208)",
+                                "\tat au.com.dius.pact.provider.junit.RunStateChanges.evaluate(RunStateChanges.kt:17)",
+                                "\tat au.com.dius.pact.provider.junit.InteractionRunner.run(InteractionRunner.kt:144)",
+                                "\tat au.com.dius.pact.provider.junit.PactRunner.runChild(PactRunner.kt:137)",
+                                "\tat au.com.dius.pact.provider.junit.PactRunner.runChild(PactRunner.kt:51)",
+                                "\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)",
+                                "\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)",
+                                "\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)",
+                                "\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)",
+                                "\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)",
+                                "\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
+                                "\tat org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)",
+                                "\tat org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)",
+                                "\tat org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)",
+                                "\tat org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)",
+                                "\tat org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)",
+                                "\tat org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)"
+                            ]
+                        }
                     }
                 }
             ]

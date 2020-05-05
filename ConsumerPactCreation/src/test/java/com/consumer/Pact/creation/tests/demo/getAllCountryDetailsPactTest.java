@@ -30,6 +30,7 @@ public class getAllCountryDetailsPactTest {
 		
 
 		DslPart countryDetails= new PactDslJsonBody()
+				
 				.object("RestResponse")
 				.array("messages")
 				.stringType("Total [249] records found.")

@@ -16,7 +16,7 @@ import au.com.dius.pact.provider.junit.target.TestTarget;
 @Provider("getCountryDetailsByISO2CodeService")
 //@PactFolder("../pacts")
 @PactBroker(host="localhost",port="8113")
-@VerificationReports(value = {"json"}, reportDir = "../reports")
+@VerificationReports(value = {"markdown"}, reportDir = "../reports")
 public class getCountryDetailsByISO2CodeContractTest {
 	public getCountryDetailsByISO2CodeContractTest()  {
 		System.setProperty("pact.verifier.publishResults", "true");
